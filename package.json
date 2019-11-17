@@ -1,0 +1,50 @@
+{
+  "name": "project-euler",
+  "version": "1.0.0",
+  "description": "Solutions to problems at https://www.projecteuler.net served via API",
+  "main": "lib/index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "dependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/cheerio": "^0.22.13",
+    "@types/express": "^4.17.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.12",
+    "@types/request-promise": "^4.1.44",
+    "axios": "^0.19.0",
+    "chai": "^4.2.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1",
+    "ts-morph": "^4.2.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register 'test/**/*.ts'",
+    "sandbox": "ts-node ./scripts/sandbox.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jake-wickstrom-lb/project-euler.git"
+  },
+  "keywords": [
+    "project",
+    "euler",
+    "typescript",
+    "node"
+  ],
+  "author": "Jake Wickstrom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jake-wickstrom-lb/project-euler/issues"
+  },
+  "homepage": "https://github.com/jake-wickstrom-lb/project-euler#readme"
+}
