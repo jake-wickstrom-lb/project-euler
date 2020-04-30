@@ -1,5 +1,4 @@
 import { Problem, Strategy } from '../Problem'
-import ProblemManager from '../ProblemManager'
 
 const title: string = 'title'
 const description: string = 'description'
@@ -14,9 +13,5 @@ class Solution extends Strategy {
     throw new Error("Method not implemented.");
   }
 }
-
-const solution = new Solution()
-
-const ProblemImplementation = new Problem(title, description, solution)
-
-ProblemManager.register(index, ProblemImplementation)
+const solution = new Solution();
+export const ProblemImplementation = new Problem(index, title, description, solution);

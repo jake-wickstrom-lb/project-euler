@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "A lagged Fibonacci sequence";
 const description: string = "\nA sequence is defined as:\n\ngk = 1, for 0 \u2264 k \u2264 1999\ngk = gk-2000 + gk-1999, for k \u2265 2000.\nFind gk mod 20092010 for k = 1018.\n";
 const index: number = 258;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

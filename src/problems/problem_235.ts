@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "An Arithmetic Geometric sequence";
 const description: string = "\n\nGiven is the arithmetic-geometric sequence u(k) = (900-3k)rk-1.\nLet s(n) = \u03A3k=1...nu(k).\n\n\nFind the value of r for which s(5000) = -600,000,000,000.\n\n\nGive your answer rounded to 12 places behind the decimal point.\n\n\n\n\n";
 const index: number = 235;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

@@ -2,7 +2,7 @@
   "name": "project-euler",
   "version": "1.0.0",
   "description": "Solutions to problems at https://www.projecteuler.net served via API",
-  "main": "lib/index.ts",
+  "bin": "./index.js",
   "directories": {
     "lib": "lib",
     "test": "tests"
@@ -17,6 +17,7 @@
     "axios": "^0.19.0",
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.3",
+    "commander": "^5.1.0",
     "express": "^4.17.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.5"
@@ -25,11 +26,13 @@
     "mocha": "^6.2.1",
     "ts-morph": "^4.2.0",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.4"
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "test": "mocha -r ts-node/register 'test/**/*.ts'",
-    "sandbox": "ts-node ./scripts/sandbox.ts"
+    "sandbox": "ts-node ./scripts/sandbox.ts",
+    "load": "ts-node ./scripts/build.ts",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

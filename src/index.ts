@@ -1,6 +1,16 @@
-import express from 'express'
+#!/usr/bin/env node
 
-const app = express()
-const PORT = process.env.port || 3000
+import { program } from "commander"
 
-app.listen(PORT, () => `Project Euler app listening on port ${PORT}.`)
+import ProblemManager from "./ProblemManager"
+
+program
+  .version("0.0.1")
+  .command("run <index> [args...]")
+  .action(function(index, args) {
+
+    let solution = ProblemManager.run(index, ...args)
+    console.log(solution)
+  })
+
+program.parse(process.argv)

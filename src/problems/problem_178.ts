@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "Step Numbers";
 const description: string = "\nConsider the number 45656. \nIt can be seen that each pair of consecutive digits of 45656 has a difference of one.\nA number for which every pair of consecutive digits has a difference of one is called a step number.\nA pandigital number  contains every decimal digit from 0 to 9 at least once.\n\nHow many pandigital step numbers less than 1040 are there?\n\n";
 const index: number = 178;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

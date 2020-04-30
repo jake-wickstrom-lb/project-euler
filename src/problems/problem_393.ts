@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "Migrating ants";
 const description: string = "\n\nAn  n\u00D7n grid of squares contains  n2 ants, one ant per square.\nAll ants decide to move simultaneously to an adjacent square (usually 4 possibilities, except for ants on the edge of the grid or at the corners).\nWe define f(n) to be the number of ways this can happen without any ants ending on the same square and without any two ants crossing the same edge between two squares.\n\n\nYou are given that f(4) = 88.\nFind  f(10).\n\n\n";
 const index: number = 393;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

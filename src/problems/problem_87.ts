@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "Prime power triples";
 const description: string = "\n\nThe smallest number expressible as the sum of a prime square, prime cube, and prime fourth power is 28. In fact, there are exactly four numbers below fifty that can be expressed in such a way:\n28 = 22 + 23 + 24\n33 = 32 + 23 + 24\n49 = 52 + 23 + 24\n47 = 22 + 33 + 24\nHow many numbers below fifty million can be expressed as the sum of a prime square, prime cube, and prime fourth power?\n\n";
 const index: number = 87;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

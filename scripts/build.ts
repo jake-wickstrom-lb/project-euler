@@ -16,15 +16,17 @@ import { ProblemFileGenerator } from '../src/meta/ProblemFileGenerator';
 
  site.getHighestArchivedProblemNumber().then(maxProblem => {
    for(let i = 1; i <= maxProblem; i++){
-     site.getProblem(i).then(problem => {
-       fs.writeFile(path.join(__dirname, `../src/problems/problem_${i}.ts`),
-       generator.generate(problem),
-       function(err) {
-          if (err) {
-              return console.error(err);
-          }
-          console.log("File created!");
-        })
-     })
+     if(!fs.existsSync(path.join(__dirname, `../src/problems/problem_${i}.ts`))) {
+       site.getProblem(i).then(problem => {
+         fs.writeFile(path.join(__dirname, `../src/problems/problem_${i}.ts`),
+         generator.generate(problem),
+         function(err) {
+            if (err) {
+                return console.error(err);
+            }
+            console.log("File created!");
+          })
+       })
+     }
    }
  })

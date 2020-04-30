@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "Numbers for which no three consecutive digits have a sum greater than a given value";
 const description: string = "\nHow many 20 digit numbers n (without any leading zero) exist such that no three consecutive digits of n have a sum greater than 9?\n";
 const index: number = 164;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

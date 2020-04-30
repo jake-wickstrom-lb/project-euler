@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "Digit fifth powers";
 const description: string = "\n\nSurprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:\n1634 = 14 + 64 + 34 + 44\n8208 = 84 + 24 + 04 + 84\n9474 = 94 + 44 + 74 + 44\nAs 1 = 14 is not a sum it is not included.\nThe sum of these numbers is 1634 + 8208 + 9474 = 19316.\nFind the sum of all the numbers that can be written as the sum of fifth powers of their digits.\n\n";
 const index: number = 30;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

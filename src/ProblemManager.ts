@@ -21,16 +21,24 @@ class ProblemManager {
    * @param  callback function to call
    * @return          [description]
    */
-  public register(index: number, problem: Problem) {
-    this.problems[index] = problem
+  public register(problem: Problem) {
+    this.problems[problem.index] = problem
   }
 
   public run(index: number, ...args: any[]) {
     if(!this.problems[index]) {
       throw new MissingSolutionError()
     }
-    this.problems[index].run(...args)
+    return this.problems[index].run(...args)
   }
 }
 
-export default new ProblemManager()
+// -------------------------------------------------------------------- //
+
+import { ProblemImplementation as p1 } from './problems/problem_1'
+
+const manager = new ProblemManager()
+
+manager.register(p1)
+
+export default manager

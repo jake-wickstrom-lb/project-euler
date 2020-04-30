@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "Divisor Square Sum";
 const description: string = "\nFor a positive integer n, let \u03C32(n) be the sum of the squares of its divisors. For example,\n\u03C32(10) = 1 + 4 + 25 + 100 = 130.\nFind the sum of all n, 0 < n < 64,000,000 such that \u03C32(n) is a perfect square.\n";
 const index: number = 211;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

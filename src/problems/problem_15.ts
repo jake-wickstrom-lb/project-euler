@@ -1,5 +1,4 @@
 import { Problem, Strategy } from "../Problem";
-import ProblemManager from "../ProblemManager";
 const title: string = "Lattice paths";
 const description: string = "\nStarting in the top left corner of a 2\u00D72 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.\n\n\nHow many such routes are there through a 20\u00D720 grid?\n\n";
 const index: number = 15;
@@ -12,5 +11,4 @@ class Solution extends Strategy {
     }
 }
 const solution = new Solution();
-const ProblemImplementation = new Problem(title, description, solution);
-ProblemManager.register(index, ProblemImplementation);
+export const ProblemImplementation = new Problem(index, title, description, solution);

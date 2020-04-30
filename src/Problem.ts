@@ -14,11 +14,13 @@ interface ProblemReport {
  * @param description The description of the problem as given on project-euler.net
  */
 export class Problem {
+  public readonly index: number
   public readonly title: string
   public readonly description: string
   private strategy: Strategy
 
-  public constructor(title: string, description: string, strategy: Strategy) {
+  public constructor(index: number, title: string, description: string, strategy: Strategy) {
+    this.index = index
     this.title = title
     this.description = description
     this.strategy = strategy
@@ -45,7 +47,7 @@ export class Problem {
     return {
       title: this.title,
       description: this.description,
-      arguments: args,
+      arguments: [...args],
       solution: solution
     }
   }
