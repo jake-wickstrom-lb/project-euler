@@ -4,10 +4,87 @@ const description: string = "\nEach new term in the Fibonacci sequence is genera
 const index: number = 2;
 class Solution extends Strategy {
     public validateArgs(args: any[]) {
-        throw new Error("Method not implemented.");
+        // largest fib value must be an integer
+        return (args[0] && args[0] > 0 && args[0] % 1 == 0)
     }
     public solve(args: any[]) {
-        throw new Error("Method not implemented.");
+
+
+        // fibonacci's sequence is closely related to the perfect ratio phi and it's inverse
+        let phi = (1 + Math.sqrt(5))/2
+        let phi_inv = 1 - phi
+
+        // the closed form formula for the fibonacci sequence
+        let fib = (n: number) => { return (Math.pow(phi, n) - Math.pow(phi_inv, n)) / Math.sqrt(5) }
+
+        // there is also a formula to determine the index of the largest number that is less than L
+        // and is still a fibonacci number (it is the inverse of Binet's formula)
+
+        // this formula calculates the index as though the sequence was 1,1,2,3,(...) unlike the
+        // 1,2,3,(...) pattern given in the question, so we will actually calculate the sum of the
+        // odd values for the purpose of this solution
+
+        let log_phi = (n: number) => { return Math.log10(n)/Math.log10(phi) } // need for fib_inv
+        let fib_inv = (n: number) => { return Math.floor( log_phi(Math.sqrt(5)*n +0.5) ) }
+
+        // now we need to figure out a closed formula for the even fibonacci numbers
+        // this seems hard at first, but like most sums, a pattern becomes clear on a closer look
+
+        // let us examine the fibonacci numbers (for simplicity we will use the mathematical
+        // definition which includes an extra 1)
+
+        // 1, 1, 2, 3, 5, 8, ...
+
+        // We can note the following pattern, noticing the first two numbers in the sequence are odd
+
+        // odd + odd  = even (1 + 1 = 2)
+        // even + odd = odd  (2 + 1 = 3)
+        // odd + even = odd  (3 + 2 = 5)
+        // odd + odd  = even (5 + 3 = 8)
+
+        // This pattern will repeat forever, with every third fibonacci number being even
+
+        // Next step, find a closed form for the sum of every third fibonacci
+
+        // Examining the formula for the fibonacci sequence, we can note that it is the sum of two
+        // geometric series
+
+        // lets first extend the formula to only consider every third value
+
+        // fib(n) = [phi^(3n)]/sqrt(5) - [(1-phi)^(3n)]/sqrt(5)
+
+        // now we remember that the sum from 1 to n of a geometric sequence with a common ratio r
+        // can be written as (1 - r^(n))/(1-r)
+
+        // In our case, our a_1 value is 1, and our common ratios are phi^3 and (1-phi)^3
+        // respectively
+
+        // so we find that the sum of even fibonacci numbers can be calculated by simply finding the
+        // solution to:
+
+        // fib(3n) = (1/sqrt(5)) *
+        //            (
+        //              [phi^3]*(1 - phi^(3n))/(1-phi^3) -
+        //              [1 - phi]^3*(1 - (1 - phi)^(3n))/(1 - (1 - phi))
+        //            )
+        //          )
+
+        // where n is the number of "even" numbers we will sum (which we can calculate elsewhere)
+
+        let even_fib_sum = (n: number) => {
+          // naively handle floating point error by rounding the result to the nearest integer
+          return Math.round((1/Math.sqrt(5)) * (Math.pow(phi, 3)*(1 - Math.pow(phi, 3*n))/(1 - Math.pow(phi, 3)) - Math.pow(phi_inv, 3)*(1 - Math.pow(phi_inv, 3*n))/(1 - Math.pow(phi_inv, 3))))
+        }
+
+        // we subtract 1 because the first index of the mathematical fibonacci sequence is not
+        // included in this problem
+        let max_idx = fib_inv(args[0]) - 1
+
+        let num_evens = Math.floor((max_idx + 2) / 3 )
+
+        let sum = even_fib_sum(num_evens)
+
+        return sum
     }
 }
 const solution = new Solution();
