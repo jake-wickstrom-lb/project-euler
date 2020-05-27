@@ -38,11 +38,13 @@ class ProblemManager {
 import { ProblemImplementation as p1 } from './problems/problem_1'
 import { ProblemImplementation as p2 } from './problems/problem_2'
 import { ProblemImplementation as p3 } from './problems/problem_3'
+import { ProblemImplementation as p4 } from './problems/problem_4'
 
 const manager = new ProblemManager()
 
 manager.register(p1)
 manager.register(p2)
 manager.register(p3)
+manager.register(p4)
 
 export default manager
